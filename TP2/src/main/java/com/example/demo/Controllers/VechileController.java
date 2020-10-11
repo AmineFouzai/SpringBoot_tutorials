@@ -25,17 +25,17 @@ public class VechileController {
 	
 	
 	@RequestMapping(value="/",
-					method=RequestMethod.GET)
+			method=RequestMethod.GET)
 	public String showCreate()
 	{
 		return "createVehicle";
 	}
 	
 	@RequestMapping(value="/saveVehicle",
-					method=RequestMethod.POST)
+			method=RequestMethod.POST)
 	public String saveVehicle(@ModelAttribute("vehicle") Vehicle vehicle, 
-							  @RequestParam("date") @DateTimeFormat(pattern= "yyyy-MM-dd") Date date,
-							  ModelMap modelMap) throws ParseException 
+				 @RequestParam("date") @DateTimeFormat(pattern= "yyyy-MM-dd") Date date,
+				 ModelMap modelMap) throws ParseException 
 	{
 		
         
@@ -46,7 +46,7 @@ public class VechileController {
 	}
 	
 	@RequestMapping(value="/listeVehicles",
-					method=RequestMethod.GET)
+			method=RequestMethod.GET)
 	public String listeVehicles(ModelMap modelMap)
 	{
 		List<Vehicle> vehicles = vehicleService.getAllVehicles();
@@ -55,7 +55,7 @@ public class VechileController {
 	}
 	
 @RequestMapping(value="/deleteVehicle",
-				method=RequestMethod.GET)
+		method=RequestMethod.GET)
 	public String supprimerArbre(@RequestParam("id") Long id,ModelMap modelMap)
 	{
 		Vehicle vehicle= new Vehicle();
@@ -64,7 +64,8 @@ public class VechileController {
 		return listeVehicles(modelMap);
 	}
 
-	@RequestMapping("/changeVehicle")
+	@RequestMapping(value="/changeVehicle",
+			method=RequestMethod.GET)
 	public String editerArbre(@RequestParam("id") Long id,ModelMap modelMap)
 	{
 		Vehicle vehicle= vehicleService.getVehicle(id);
@@ -73,10 +74,11 @@ public class VechileController {
  	}
 	
 
-	@RequestMapping("/updateVehicle")
+	@RequestMapping(value="/updateVehicle",
+			method=RequestMethod.POST)
 	public String updateArbre(@ModelAttribute("vehicle") Vehicle vehicle,
-							  @RequestParam("date")  @DateTimeFormat(pattern= "yyyy-MM-dd")  Date date,
-			                  ModelMap modelMap) throws ParseException 
+				 @RequestParam("date")  @DateTimeFormat(pattern= "yyyy-MM-dd")  Date date,
+			         ModelMap modelMap) throws ParseException 
 	{
 		
 		 vehicle.setVehicleCreationDate(date);
