@@ -39,9 +39,9 @@ public class VechileController {
 	{
 		
         
-		 vehicle.setVehicleCreationDate(date);
-         Vehicle savedVehicle = vehicleService.addVehicle(vehicle);
-		 modelMap.addAttribute("msg", "vehicle successfully saved  with ID ["+savedVehicle.getVehicleId()+"]");
+		vehicle.setVehicleCreationDate(date);
+         	Vehicle savedVehicle = vehicleService.addVehicle(vehicle);
+		modelMap.addAttribute("msg", "vehicle successfully saved  with ID ["+savedVehicle.getVehicleId()+"]");
 		return showCreate();
 	}
 	
@@ -80,8 +80,8 @@ public class VechileController {
 	{
 		
 		 vehicle.setVehicleCreationDate(date);
-         vehicleService.updateVehicle(vehicle);
-         List<Vehicle> vehicles = vehicleService.getAllVehicles();
+                 vehicleService.updateVehicle(vehicle);
+                 List<Vehicle> vehicles = vehicleService.getAllVehicles();
 		 modelMap.addAttribute("vehicles", vehicles);	
 		 return listeVehicles(modelMap);
 	}
