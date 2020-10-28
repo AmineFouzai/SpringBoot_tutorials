@@ -1,0 +1,50 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="template">
+
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+
+<head>
+<meta charset="utf-8">
+<title>
+Liste of Vehicles
+</title>
+</head>
+<div layout:fragment="Mycontent">
+<div class="container">
+	<div class="card">
+		<div class="card-header">
+			Liste Of Vehicles
+		</div>
+	<div>	
+	<div class="card-body">	
+		<table class="table table-striped">
+	 		<tr>
+				<th>Vehicle Id</th>
+				<th>Vehicle Type</th>
+				<th>Vehicle Model</th>
+				<th>Vehicle Creation Date</th>
+				<th>Vehicle Price</th>
+				<th>Delete</th>
+				<th>Edit</th>
+				<th></th>
+ 			</tr>
+ 			<tr th:each="v:${vehicles.content}">
+ 				<td th:text="${v.vehicleId }" ></td>
+ 				<td th:text="${v.vehicleType }"></td>
+ 				<td th:text="${v.vehicleModel }"></td>
+				<td th:text="${v.vehicleCreationDate }"></td>
+    			<td th:text="${v.vehiclePrice }"></td>
+ 				<td><a onclick="return confirm('are you sure ?')" th:href=@{/deleteVehicle(id=${v.vehicleId})}>Delete</a></td>
+ 				<td><a th:href="@{/changeVehicle(id=${v.vehicleId})}">Edit</a></td>
+ 			</tr>
+ 	 	</table>
+ 	 	<ul class="nav nav-pills">
+		<li th:each="page,status:${pages}">
+			<a th:class="${status.index==currentPage?'btn btn-primary':'btn' }" th:href="@{ listeVehicles(page=${status.index}, size=${size} ) }" th:text="${status.index }"></a>
+		</li>
+		</ul>
+ 	 	
+	</div>
+</div>
+</div>
+</div>
+</div>
