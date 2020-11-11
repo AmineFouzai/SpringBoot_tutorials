@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="template">
+
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+<div layout:fragment="Mycontent">
+
+<div class="container">
+	<hr>
+	<div class="card-body">
+		<form action="updateVehicle" method="post">
+ 			<div class="form-group">
+ 				<label class="control-label" >Vehicle ID :</label>
+ 				<input type="text" name="vehicleId" th:value="${vehicle.vehicleId}" readonly  class="form-control"/>
+ 			</div>
+ 			
+ 			<div class="form-group">
+ 				<label class="control-label">Vehicle Type :</label>
+ 				<input type="text" name=vehicleType th:value="${vehicle.vehicleType}" class="form-control"/>
+ 			</div>
+ 			
+ 			<div class="form-group">
+ 				<label class="control-label">Vehicle Model:</label>
+ 				<input type="text" name="vehicleModel" th:value="${vehicle.vehicleModel}" class="form-control"/>
+ 			</div>
+ 			
+ 			<div class="form-group">
+				 <label class="control-label"> Vehicle Creation Date:</label>
+ 
+ 				 <input type="date" name="date" th:value="${vehicle.vehicleCreationDate}" class="form-control"/>
+			 </div>
+			 
+			 <div class="form-group">
+ 				<label class="control-label">Vehicle Price:</label>
+ 				<input type="number" name="vehiclePrice" th:value="${vehicle.vehiclePrice}" class="form-control"/>
+ 			</div>
+			 
+ 			<div>
+ 				<button type="submit" class="btn btn-primary">Change</button>
+			</div>
+		</form>
+	</div>
+	<br/>
+	<br/>
+	<a th:href="@{listeVehicles}" >Liste Vehicles</a>
+</div>
+</div>
