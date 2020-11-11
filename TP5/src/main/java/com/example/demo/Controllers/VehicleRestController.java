@@ -51,7 +51,7 @@ public class VehicleRestController {
 	}
 	
 	@RequestMapping(value="/warehouse/{idCat}",method = RequestMethod.GET)
-	public List<Vehicle> getProduitsByCatId(@PathVariable("idCat") Long idCat) {
+	public List<Vehicle> getVehiclesByCatId(@PathVariable("idCat") Long idCat) {
 	return vehicleservice.findByWarehouseId(idCat);
 	}
 	
