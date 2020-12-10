@@ -1,0 +1,48 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="template">
+
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+
+<div layout:fragment="Mycontent">
+<div class="conatainer">
+	<div class="card-body">
+		<form th:action="@{saveVehicle}" method="POST">
+		
+   			<div class="form-group">
+      			<label class="control-label">Vehicle Type:</label>
+       			<input type="text" name="vehicleType" class="form-control" th:value="${vehicle.vehicleType}" />
+       			<span th:errors="${vehicle.vehicleType}" class="text-danger"> </span>
+       			
+   			</div>	
+    
+   			<div class="form-group">
+      			<label class="control-label">Vehicle Model :</label>
+       			<input type="text" name="vehicleModel" class="form-control"  th:value="${vehicle.vehicleModel}"/>
+       			<span th:errors="${vehicle.vehicleModel}" class="text-danger"> </span>
+   			</div>	  
+    
+   			<div class="form-group">
+      			<label class="control-label">Vehicle Creation Date:</label>
+      			<input type="date" name="date" class="form-control" th:value="${vehicle.vehicleCreationDate}"/>
+      			<span th:errors="${vehicle.vehicleCreationDate}" class="text-danger"> </span>
+   			</div>			
+    
+   			<div class="form-group">
+       			<label class="control-label" >Vehicle Price:</label>
+       			<input type="number" name="vehiclePrice" class="form-control" th:value="${vehicle.vehiclePrice}"/>
+       			<span th:errors="${vehicle.vehiclePrice}" class="text-danger"> </span>
+   			</div>
+     
+   			<div>
+ 		  		<button type="submit" class="btn btn-primary">Add</button>
+   			</div>
+		</form>
+	</div>
+	<div>
+	<p th:text="${msg}"></p>
+	
+	<br/>
+	<br/>
+	<a th:href="@{listeVehicles}">Liste Vehicles</a>
+	</div>
+</div>
+</div>
